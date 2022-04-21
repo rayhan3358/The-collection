@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira sans ',sans-serif;
+}
+img{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.grid{
+    padding: 45px;  
+    display:grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(3,1fr);
+ 
+}
+
+.col{
+    background-color:violet;
+    margin-bottom: 16px;
+    padding: 16px;
+    border-radius: 30px;
+    border: 2px solid
+}
+
+.Logo{
+    display:block;
+    width: 30px;
+    height: 30px;
+    }
+
+
