@@ -97,67 +97,73 @@ const collection  =  [
       const main = document.querySelector("main")
 
    for (const card of collection) {
-    collection.forEach (card => {
+   
 
     console.log(card.titre);
     console.log(card.picture);
     console.log(card.artist);
     
+    const grid = document.createElement('div')
+    grid.className = 'grid'
 
+    
+    
     const article = document.createElement("article")
     article.className = "cards"
-
+    
     const div1 = document.createElement("div")
     div1.className = "year"
-
+    
     const div2 = document.createElement("div")
     div2.className = "editionprice"
-
-
-
+    
+    
+    
     const titre = document.createElement ("h1")
     titre.className = "cardname"
     titre.innerText = card.titre
-
+    
     const image = document.createElement ("img")
     image.className = "img"
     image.src = card.picture
-
-    const characteristics = document.createElement ("p")
+    
+    const rarity = document.createElement ("p")
     rarity.className = "characteristics"
     rarity.innerText = card.characteristics
-
+    
     const releasYear = document.createElement ("p")
     releasYear.className = "year"
     releasYear.innerText = card.releaseYear
-
+    
     const edition = document.createElement ("p")
     edition.className = "edition"
     edition.innerText = card.edition
-
+    
     const price = document.createElement ("p")
     price.className = "price"
     price.innerText = card.price
-
-
+    
+    
     const drawer = document.createElement ("aside")
     drawer.className = "drawer"
     drawer.innerText = card.drawer
-
+    
     const language = document.createElement ("section")
     language.className = "language"
     language.innerText = card.languages
     
+    main.appendChild(article)
+    main.appendChild(grid)
     
     article.appendChild(titre)
     article.appendChild(image)
-
+    
     article.appendChild(div1)
     article.appendChild(div2)
-
+    
     div1.appendChild(rarity)
     div1.appendChild(releasYear)
-
+    
     div2.appendChild(edition)
     div2.appendChild(price)
 
@@ -165,7 +171,6 @@ const collection  =  [
 
     article.appendChild(language)
 
-    main.appendChild(article)
         
-})
+
    }
