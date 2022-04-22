@@ -4,33 +4,37 @@
     box-sizing: border-box;
     font-family: 'Fira sans ',sans-serif;
 }
-img{
+h1 {
+    
+}
+.img{
     display: block;
-    width: 100%;
-    max-width: 100%;
+    width: 50%;
     border-radius: 10px;
 }
-
-.grid{
+main {
     padding: 45px;  
     display:grid;
-    grid-gap: 15px;
     grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+}
+
+
+.grid{  
+   display:none;
+
+    
  
 }
 
-.col{
+.cards{
+    padding: 45px;  
+    grid-gap: 15px;
     background-color:violet;
-    margin-bottom: 16px;
-    padding: 16px;
-    border-radius: 30px;
-    border: 2px solid
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 50px;
+    border: 2px solid;
+    width:300px;
+    
 }
-
-.Logo{
-    display:block;
-    width: 30px;
-    height: 30px;
-    }
-
-
