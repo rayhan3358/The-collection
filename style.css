@@ -4,13 +4,15 @@
     box-sizing: border-box;
     font-family: 'Fira sans ',sans-serif;
 }
-h1 {
-    
+body{
+    background-image: url(./img/sky.jpg);
 }
 .img{
     display: block;
-    width: 50%;
+    width: 45%;
     border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 main {
     padding: 45px;  
@@ -18,23 +20,47 @@ main {
     grid-template-columns: repeat(3,1fr);
     grid-gap: 10px;
 }
+@media (min-width: 540px){
+    .card{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (min-width: 960px){
+    .card{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
 
 
 .grid{  
    display:none;
-
-    
- 
 }
+    .cards{
+    background: var(--card-background);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px;
+    box-shadow: 0 14px 26px rgba(0,0,0,.04);
+    transition: all .3s ease-out;
+    text-decoration: none;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 2, 1fr;
+    background-color: #FAACA8;
+    background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
 
-.cards{
-    padding: 45px;  
-    grid-gap: 15px;
-    background-color:violet;
-    margin-bottom: 15px;
-    padding: 20px;
-    border-radius: 50px;
-    border: 2px solid;
-    width:300px;
-    
+    }
+
+ .card-background{
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom:0;
+    }
+.cards:hover{
+    transform: scale(1.08);
+}
+.cards:hover > .card:not(:hover) > .card-background {
+    filter:brightness(.5) saturate(0)
+    contrast(1.2) blur(20px);
 }
