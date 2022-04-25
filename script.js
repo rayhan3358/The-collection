@@ -1,9 +1,51 @@
 const collection  =  [ 
+  {
+    titre : "Trinity" , 
+    artist : "Laylow" , 
+    releaseYear : 2020 , 
+    picture: "img/Trinity.jpg",
+    genre: [ "Hip-hop" ,"Rap" ] ,
+    languages: "French", 
+    characteristics : [ 
+      "Trinity est le premier album studio de Laylow, sorti le 28 février 2020. Il est composé de 22 pistes, cette tracklist se présente avec des orthographes plutôt particulières. Parmi les 22 titres, 7 sont des interludes servant de transitions avec les voix de Laylow, le logiciel Trinity ou d'autres personnages." , 
+      
+    ] , 
+    
+     
+  },
+  {
+    titre : "Jackboys" , 
+    artist : "Jackboys & Travis Scott" , 
+    releaseYear : 2019 , 
+    picture: "img/Jackboys.jpg",
+    genre: [ "Hip-hop" ,"Rap" ] ,
+    languages: "English", 
+    characteristics : [ 
+      "Reunissant les signatures du label cactus Jack Recods de Travis Scott, le collectif americain Jackboys est cree en 2019, reunissant Scott,Don Toliver,Sheck wes, Luxurry Tax et Chase B le temps d'une compilation eponyme publiee au mois de novembre." , 
+      
+    ] , 
+    
+     
+  },
+
+  {
+    titre : "AstroWorld" , 
+    artist : "Travis Scott" , 
+    releaseYear : 2017 , 
+    picture: "img/Astroworld.jpg",
+    genre: [ "Hip-hop" ,"Rap" ] ,
+    languages: "English", 
+    characteristics : [ 
+      "Le titre de l'album est annoncé en mai 2016, et initialement teasé pour 2017. Le nom de l'album est inspiré du parc à thème désormais fermé Six Flags AstroWorld, situé à Houston. En 2017, durant une interview, Scott confie que le but de l'album est de faire rouvrir ce parc d'Houston où les enfants jouaient. ''It took the fun out of the city.”.Scott décrit aussi cet album comme une continuité à son premier album Rodeo sorti en 2015." , 
+      
+    ] , 
+    
+     
+  },
   { 
     titre : "Batterie faible" , 
     artist : "Damso" , 
     releaseYear : 2016 , 
-    link : "https://music.apple.com/fr/album/batterie-faible/1440877707" ,
     picture: "img/BatterieFaible.jpg", 
     genre : [ "Hip-hop" ,"Rap" ] , 
     languages: "French",
@@ -17,7 +59,6 @@ const collection  =  [
     titre : "Melancholia" , 
     artist : "Green Montana" , 
     releaseYear : 2021 , 
-    link : "https://music.apple.com/fr/album/melancholia-999/1565557654" , 
     picture: "img/Melancholia999.jpg",
     genre : [ "Hip-hop" ,"Rap" ] ,
     languages: "French", 
@@ -62,6 +103,7 @@ const collection  =  [
         
       ] , 
   },
+  
   {
     titre : "J.O.$" , 
     artist : "Josman" , 
@@ -73,13 +115,16 @@ const collection  =  [
       "ses trois projets précédents avaient déjà positionné Josman comme un cas à part au sein du hip-hop francophone. Connu pour sa technique aiguisée, la richesse de son vocabulaire et son goût pour le multisyllabique, il se distingue aussi par une personnalité décalée." , 
       
     ] , 
+    
+     
   }
+  
   
 ] ;
 
 const main = document.querySelector("main")
 
- for (const card of collection) {
+for (const card of collection) {
  
 
   console.log(card.titre);
@@ -105,16 +150,22 @@ const main = document.querySelector("main")
   const titre = document.createElement ("h1")
   titre.className = "cardname"
   titre.innerText = card.titre
+
   
   const image = document.createElement ("img")
   image.className = "img"
   image.src = card.picture
+
   
   const rarity = document.createElement ("p")
   rarity.className = "characteristics"
   rarity.innerText = card.characteristics
-  
-  const releasYear = document.createElement ("p")
+
+  const artist= document.createElement ("h3")
+  artist.className = "artist"
+  artist.innerText = card.artist
+
+  const releasYear = document.createElement ("h4")
   releasYear.className = "year"
   releasYear.innerText = card.releaseYear
   
@@ -122,14 +173,6 @@ const main = document.querySelector("main")
   genre.className = "genre"
   genre.innerText = card.genre
   
-  const price = document.createElement ("p")
-  price.className = "price"
-  price.innerText = card.price
-  
-  
-  const drawer = document.createElement ("aside")
-  drawer.className = "drawer"
-  drawer.innerText = card.drawer
   
   const language = document.createElement ("section")
   language.className = "language"
@@ -143,17 +186,49 @@ const main = document.querySelector("main")
   
   article.appendChild(div1)
   article.appendChild(div2)
-  
-  div1.appendChild(rarity)
+
+  div1.appendChild(artist)
   div1.appendChild(releasYear)
+  div1.appendChild(rarity)
+ 
   
   div2.appendChild(genre)
-  div2.appendChild(price)
+  
 
-  article.appendChild(drawer)
-
-  article.appendChild(language)
-
-      
+  
+ 
+  article.appendChild(language) 
 
  }
+
+function pickN(inputArray,n) {
+  if (n>inputArray.length)
+  return inputArray
+  const inputcopy = [...inputArray]
+  const selectElement=[]
+
+  for(let i=0;i<n;i++){
+    const randomIndex = Math.floor(Math.random()*inputcopy.length)
+
+  selectElement.push(inputcopy[randomIndex])
+  inputcopy.slice(randomIndex,1)
+  }
+return selectElement
+}
+function render(list){
+  const main =document.querySelector('main')
+
+  while(main.children.length>0){
+    main.children[0].remove()
+  }
+  for (const element of list){
+    collection(element)
+  }
+}
+function buttonPressed(){
+const n = Number(document.querySelector('#n_select').value)
+const selectedCollection = pickN(collection,n)
+
+collection(selectedCollection)
+}
+document.querySelector('#get_list').addEventListener('click', buttonPressed)
